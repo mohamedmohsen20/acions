@@ -14,6 +14,12 @@ on:
 jobs:
   build_docker_img:
      runs-on: ubuntu-latest
+     permissions:
+        # required for all workflows
+        security-events: write
+        # only required for workflows in private repositories
+        actions: read
+        contents: read
      env:
        TAG: python-api
        VERSION: $(echo $GITHUB_SHA | cut -c1-7)
