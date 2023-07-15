@@ -29,21 +29,17 @@ jobs:
        uses: actions/checkout@v3
        
      - name: Build Docker Image
-       run: | 
-        echo "${{ env.VERSION }}"
-        docker build -t $TAG .
-        docker tag $TAG ${{ env.TAG }}:${{ env.VERSION }}
-        echo "${{ env.TAG }}:${{ env.VERSION }}"
+       run: |
+          docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
+
        
        
-     - name: Image Scan
+     - name: Run Trivy vulnerability scanner
        uses: aquasecurity/trivy-action@master
        with:
-          image-ref: '${{ env.TAG }}:${{ env.VERSION }}'
-          security-checks: 'vuln,secret,config'
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
           format: 'sarif'
-          output: 'trivy-image-results.sarif'
-          severity: 'CRITICAL,HIGH'
+          output: 'trivy-results.sarif'
           
      - name: Upload the scan result to GitHub Security
        uses: github/codeql-action/upload-sarif@v2
