@@ -25,8 +25,9 @@ jobs:
        
      - name: Build Docker Image
        run: | 
+        echo "${{ env.VERSION }}"
         docker build -t $TAG .
-        docker tag $TAG TAG:VERSION
+        docker tag $TAG ${{ env.TAG }}:${{ env.VERSION }}
         echo "${{ env.TAG }}:${{ env.VERSION }}"
        
        
