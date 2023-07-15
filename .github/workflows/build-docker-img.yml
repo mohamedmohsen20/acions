@@ -16,7 +16,6 @@ jobs:
      runs-on: ubuntu-latest
      env:
        TAG: python-api
-       REGISTRY: ghcr.io
        VERSION: $(echo $GITHUB_SHA | cut -c1-7)
      
      steps:
