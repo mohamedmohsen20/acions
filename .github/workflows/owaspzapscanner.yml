@@ -1,0 +1,12 @@
+name: OWASP ZAP Sccaner
+on:
+  workflow_dispatch:
+  
+  
+jobs:
+  zap_scan:
+    name: scan wep application 
+    runs-on: ubuntu-latest 
+    steps:
+      - name: ZAP SCAN
+        uses: zaproxy/action-full-scan@
