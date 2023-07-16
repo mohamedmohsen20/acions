@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: get path 
+        run: ll .
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         #continue-on-error: true
