@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: get path 
-        run: ll .
+        run: ls -l
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         #continue-on-error: true
