@@ -1,4 +1,4 @@
-FROM python:3.12-slim	
+FROM python:3.13.0a4-slim	
 ADD api.py /
 RUN pip install flask
 RUN pip install flask_restful
